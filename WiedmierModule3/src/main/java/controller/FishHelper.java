@@ -37,7 +37,7 @@ public class FishHelper {
 	public void deleteItem(Fish toDelete) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Fish> typedQuery = em.createQuery("SELECT fi FROM Fish fi WHERE fi.species = :selectedSpecies and li.numoffish = :selectNumOfFish", Fish.class);
+		TypedQuery<Fish> typedQuery = em.createQuery("SELECT fi FROM Fish fi WHERE fi.species = :selectedSpecies and fi.numOfFish = :selectNumOfFish", Fish.class);
 		//Substitute parameter with	actual data from the toDelete item
 		typedQuery.setParameter("selectedSpecies",	toDelete.getSpecies());
 		typedQuery.setParameter("selectNumOfFish",	toDelete.getNumOfFish());
@@ -97,7 +97,7 @@ public class FishHelper {
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Fish> typedQuery = em.createQuery("SELECT fi FROM Fish fi WHERE fi.numoffish = :selectedNumber", Fish.class);
+		TypedQuery<Fish> typedQuery = em.createQuery("SELECT fi FROM Fish fi WHERE fi.numOfFish = :selectedNumber", Fish.class);
 		typedQuery.setParameter("selectedNumber", ownedNum);
 		List<Fish> foundItems = typedQuery.getResultList();
 		em.close();
